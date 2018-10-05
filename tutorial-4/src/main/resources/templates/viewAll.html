@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+	<title>View All Flights</title>
+</head>
+
+<body>
+	<table border="1">
+   		<tr>
+      		<td align = "center">Flight Number</td>
+      		<td align = "center">Origin</td>
+      		<td align = "center">Destination</td>
+      		<td align = "center">Time</td>      			
+      		<td align = "center">Pilot Name</td>
+      		<td align = "center">License Number</td>
+   		</tr> 
+   		<th:block th:each="flight : ${flightList}">
+      		<tr>
+         		<td th:text="${flight.flightNumber}" align = "center"></td>
+         		<td th:text="${flight.origin}" align = "center"></td>
+         		<td th:text="${flight.destination}" align = "center"></td>
+         		<td th:text="${flight.time}" align = "center"></td>	
+         		<td th:text="${flight.pilot.name}" align = "center"></td>	
+         		<td th:text="${flight.pilot.licenseNumber}" align = "center"></td>	
+      		</tr>      		
+	</table>
+	
+	<br>
+	<td><a th:href="@{/}">Home</a></td>
+</body>
+</html>

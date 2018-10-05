@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Flight List</title>
+</head>
+
+<body>	
+	<h2 th:text="'Flight History dari ' + ${pilotName}"></h2>
+	<table border="1">
+   		<tr>
+      		<td align = "center">Flight Number</td>
+      		<td align = "center">Origin</td>
+      		<td align = "center">Destination</td>
+      		<td align = "center">Time</td>      			
+   		</tr> 
+   		
+   		<th:block th:each="flight : ${flightList}">
+      		<tr>
+         		<td th:text="${flight.flightNumber}" align = "center"></td>
+         		<td th:text="${flight.origin}" align = "center"></td>
+         		<td th:text="${flight.destination}" align = "center"></td>
+         		<td th:text="${flight.time}" align = "center"></td>
+         		
+         		<!-- Latihan No 2 (delete Flight) -->         		
+         		<td>
+         			<form th:action="@{'/flight/delete/' + ${flight.id}}"> 
+						<button type="submit">Delete</button> 
+					</form>
+         		</td> 	
+         		
+         		<!-- Latihan 3 (update Flight) -->
+         		<td>
+         			<form th:action="@{'/flight/update/' + ${flight.id}}"> 
+						<button type="submit">Update</button> 
+					</form>
+         		</td> 	
+      		</tr>      		
+	</table>
+	
+	<br>
+	<td><a th:href="@{/}">Home</a></td>
+</body>
+</html>
